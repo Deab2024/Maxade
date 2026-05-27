@@ -92,10 +92,10 @@
       right: 0;
       bottom: 0;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 20fr 24fr 18fr 38fr;
       gap: 0 18px;
-      padding: 17px 26px 20px;
-      background: linear-gradient(180deg, rgba(43, 94, 166, 0.04), rgba(43, 94, 166, 0.98) 8%);
+      padding: 18px 28px 20px;
+      background: transparent;
       font-size: clamp(8px, 1.25vw, 12px);
       line-height: 1.15;
     }
@@ -113,28 +113,33 @@
       align-items: baseline;
       padding: 1px 3px;
       border-radius: 5px;
-      color: var(--white);
+      color: transparent;
       background: transparent;
       border: 0;
       text-align: left;
       font: inherit;
       font-weight: 700;
       cursor: pointer;
-      transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+      transition: background 140ms ease, transform 140ms ease;
     }
 
     .list-item:hover,
     .list-item:focus-visible,
     .list-item.is-active {
-      background: var(--accent);
-      color: #10283e;
-      transform: translateX(2px);
+      background: rgba(255, 204, 26, 0.55);
+      color: transparent;
+      transform: none;
       outline: none;
     }
 
     .list-number {
       text-align: right;
       font-weight: 900;
+      color: transparent;
+    }
+
+    .list-item span {
+      color: transparent;
     }
 
     .tooltip {
@@ -187,11 +192,11 @@
       }
 
       .list-panel {
-        position: static;
-        grid-template-columns: 1fr;
-        padding: 18px;
-        font-size: 14px;
-        background: #2b5ea6;
+        position: absolute;
+        grid-template-columns: 20fr 24fr 18fr 38fr;
+        padding: 18px 28px 20px;
+        font-size: clamp(8px, 1.25vw, 12px);
+        background: transparent;
       }
 
       .pin-hit {
