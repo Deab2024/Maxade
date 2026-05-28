@@ -208,8 +208,18 @@
     }
 
     body.is-editing .list-panel {
-      pointer-events: none;
-      opacity: 0.55;
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    body.is-editing .list-item {
+      background: rgba(255, 204, 26, 0.18);
+      outline: 1px dashed rgba(255, 255, 255, 0.75);
+      cursor: grab;
+    }
+
+    body.is-editing .list-item:active {
+      cursor: grabbing;
     }
 
     .edit-panel button,
@@ -311,6 +321,12 @@
         <button class="pin-hit symbol-pin" data-id="info" style="left: 19.40%; top: 32.40%;" aria-label="Informationstält"></button>
         <button class="pin-hit symbol-pin" data-id="race" style="left: 24.20%; top: 38.20%;" aria-label="Idrottens dag-lopp: 11:30 & 14:45"></button>
         <button class="pin-hit symbol-pin" data-id="ung" style="left: 8.10%; top: 31.00%;" aria-label="Ung Fritid"></button>
+        <button class="pin-hit symbol-pin" data-id="finska" style="left: 8.00%; top: 22.80%;" aria-label="Torshälla Finska Förening"></button>
+        <button class="pin-hit symbol-pin" data-id="gardet" style="left: 11.30%; top: 25.10%;" aria-label="Eskilstuna Gardet"></button>
+        <button class="pin-hit symbol-pin" data-id="ungdomssymfoniker" style="left: 15.20%; top: 25.40%;" aria-label="Eskilstuna Ungdomssymfoniker"></button>
+        <button class="pin-hit symbol-pin" data-id="toilet" style="left: 37.30%; top: 20.80%;" aria-label="Toaletter"></button>
+        <button class="pin-hit symbol-pin" data-id="toilet" style="left: 87.00%; top: 61.80%;" aria-label="Toaletter"></button>
+        <button class="pin-hit symbol-pin" data-id="medical" style="left: 31.60%; top: 18.30%;" aria-label="Sjukvård"></button>
       </div>
 
       <div class="list-panel" id="listPanel" aria-label="Numrerad lista över aktörer">
@@ -358,6 +374,11 @@
         <button class="list-item" data-id="info" style="left: 80.6%; top: 32.4%; width: 18.0%;" aria-label="Informationstält"></button>
         <button class="list-item" data-id="race" style="left: 75.6%; top: 51.0%; width: 20.0%; height: 10.5%;" aria-label="Idrottens dag-lopp: 11:30 & 14:45"></button>
         <button class="list-item" data-id="ung" style="left: 80.2%; top: 73.5%; width: 12.2%;" aria-label="Ung Fritid"></button>
+        <button class="list-item" data-id="finska" style="left: 64.6%; top: 3.8%; width: 22.0%;" aria-label="Torshälla Finska Förening"></button>
+        <button class="list-item" data-id="gardet" style="left: 64.6%; top: 10.8%; width: 17.0%;" aria-label="Eskilstuna Gardet"></button>
+        <button class="list-item" data-id="ungdomssymfoniker" style="left: 64.6%; top: 17.8%; width: 28.0%;" aria-label="Eskilstuna Ungdomssymfoniker"></button>
+        <button class="list-item" data-id="toilet" style="left: 64.6%; top: 51.0%; width: 12.4%;" aria-label="Toaletter"></button>
+        <button class="list-item" data-id="medical" style="left: 64.6%; top: 73.5%; width: 11.8%;" aria-label="Sjukvård"></button>
       </div>
     </section>
   </main>
@@ -367,8 +388,9 @@
     const items = Array.from(document.querySelectorAll('.list-item'));
     const tooltip = document.querySelector('#tooltip');
     const mapWrap = document.querySelector('#mapWrap');
+    const listPanel = document.querySelector('#listPanel');
     const isEditMode = new URLSearchParams(window.location.search).get('edit') === '1';
-    const storageKey = 'maxade-dagar-pin-positions-stable';
+    const storageKey = 'maxade-dagar-edit-positions-v3';
 
     if (isEditMode) document.body.classList.add('is-editing');
 
@@ -380,11 +402,21 @@
 
     const savedPositions = JSON.parse(localStorage.getItem(storageKey) || '{}');
 
-    pins.forEach(function(pin) {
-      const saved = savedPositions[pin.dataset.id];
+    pins.forEach(function(pin, index) {
+      const saved = savedPositions['pin-' + pin.dataset.id + '-' + index] || savedPositions[pin.dataset.id];
       if (saved) {
         pin.style.left = saved.left;
         pin.style.top = saved.top;
+      }
+    });
+
+    items.forEach(function(item, index) {
+      const saved = savedPositions['item-' + item.dataset.id + '-' + index];
+      if (saved) {
+        item.style.left = saved.left;
+        item.style.top = saved.top;
+        if (saved.width) item.style.width = saved.width;
+        if (saved.height) item.style.height = saved.height;
       }
     });
 
@@ -420,18 +452,30 @@
     }
 
     function saveCurrentPositions() {
-      const positions = Object.fromEntries(
-        pins.map(function(pin) {
-          return [
-            pin.dataset.id,
-            {
-              left: pin.style.left,
-              top: pin.style.top,
-              label: pin.getAttribute('aria-label') || pin.dataset.id
-            }
-          ];
-        })
-      );
+      const positions = {};
+
+      pins.forEach(function(pin, index) {
+        positions['pin-' + pin.dataset.id + '-' + index] = {
+          type: 'pin',
+          id: pin.dataset.id,
+          left: pin.style.left,
+          top: pin.style.top,
+          label: pin.getAttribute('aria-label') || pin.dataset.id
+        };
+      });
+
+      items.forEach(function(item, index) {
+        positions['item-' + item.dataset.id + '-' + index] = {
+          type: 'item',
+          id: item.dataset.id,
+          left: item.style.left,
+          top: item.style.top,
+          width: item.style.width,
+          height: item.style.height,
+          label: item.getAttribute('aria-label') || item.dataset.id
+        };
+      });
+
       localStorage.setItem(storageKey, JSON.stringify(positions));
       return positions;
     }
@@ -449,41 +493,92 @@
     });
 
     if (isEditMode) {
-      let draggedPin = null;
+      let draggedElement = null;
+      let dragKind = null;
+      let dragStart = null;
+
+      function startDrag(element, kind, event) {
+        draggedElement = element;
+        dragKind = kind;
+        const parentRect = kind === 'pin' ? mapWrap.getBoundingClientRect() : listPanel.getBoundingClientRect();
+        dragStart = {
+          parentRect: parentRect,
+          startX: event.clientX,
+          startY: event.clientY,
+          left: parseFloat(element.style.left) || 0,
+          top: parseFloat(element.style.top) || 0,
+          width: parseFloat(element.style.width) || 0,
+          height: parseFloat(element.style.height) || 0,
+          resize: kind === 'item' && event.shiftKey
+        };
+        element.setPointerCapture(event.pointerId);
+        setActive(element.dataset.id);
+      }
+
+      function moveDragged(event) {
+        if (!draggedElement || !dragStart) return;
+
+        const dx = ((event.clientX - dragStart.startX) / dragStart.parentRect.width) * 100;
+        const dy = ((event.clientY - dragStart.startY) / dragStart.parentRect.height) * 100;
+
+        if (dragStart.resize) {
+          const width = Math.max(1, Math.min(100, dragStart.width + dx));
+          const height = Math.max(1, Math.min(40, dragStart.height + dy));
+          draggedElement.style.width = width.toFixed(2) + '%';
+          draggedElement.style.height = height.toFixed(2) + '%';
+        } else {
+          const left = Math.max(-5, Math.min(105, dragStart.left + dx));
+          const top = Math.max(-5, Math.min(105, dragStart.top + dy));
+          draggedElement.style.left = left.toFixed(2) + '%';
+          draggedElement.style.top = top.toFixed(2) + '%';
+        }
+
+        setActive(draggedElement.dataset.id);
+      }
+
+      function stopDrag() {
+        if (!draggedElement) return;
+        saveCurrentPositions();
+        draggedElement = null;
+        dragKind = null;
+        dragStart = null;
+      }
 
       pins.forEach(function(pin) {
         pin.addEventListener('pointerdown', function(event) {
-          draggedPin = pin;
-          pin.setPointerCapture(event.pointerId);
-          setActive(pin.dataset.id);
+          startDrag(pin, 'pin', event);
         });
 
-        pin.addEventListener('pointermove', function(event) {
-          if (!draggedPin || draggedPin !== pin) return;
+        pin.addEventListener('pointermove', moveDragged);
+        pin.addEventListener('pointerup', stopDrag);
+      });
 
-          const rect = mapWrap.getBoundingClientRect();
-          const left = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
-          const top = Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100));
-
-          pin.style.left = left.toFixed(2) + '%';
-          pin.style.top = top.toFixed(2) + '%';
-          setActive(pin.dataset.id);
+      items.forEach(function(item) {
+        item.addEventListener('pointerdown', function(event) {
+          startDrag(item, 'item', event);
         });
 
-        pin.addEventListener('pointerup', function() {
-          if (!draggedPin) return;
-          saveCurrentPositions();
-          draggedPin = null;
-        });
+        item.addEventListener('pointermove', moveDragged);
+        item.addEventListener('pointerup', stopDrag);
       });
 
       document.querySelector('#exportPositions').addEventListener('click', async function() {
         const positions = saveCurrentPositions();
-        const cssRows = Object.entries(positions).map(function(entry) {
-          const id = entry[0];
-          const pos = entry[1];
-          return '<button class="pin-hit" data-id="' + id + '" style="left: ' + pos.left + '; top: ' + pos.top + ';" aria-label="' + pos.label + '"></button>';
-        }).join(String.fromCharCode(10));
+        const pinRows = Object.values(positions)
+          .filter(function(pos) { return pos.type === 'pin'; })
+          .map(function(pos) {
+            return '<button class="pin-hit" data-id="' + pos.id + '" style="left: ' + pos.left + '; top: ' + pos.top + ';" aria-label="' + pos.label + '"></button>';
+          })
+          .join(String.fromCharCode(10));
+
+        const itemRows = Object.values(positions)
+          .filter(function(pos) { return pos.type === 'item'; })
+          .map(function(pos) {
+            return '<button class="list-item" data-id="' + pos.id + '" style="left: ' + pos.left + '; top: ' + pos.top + '; width: ' + pos.width + '; height: ' + pos.height + ';" aria-label="' + pos.label + '"></button>';
+          })
+          .join(String.fromCharCode(10));
+
+        const cssRows = '<!-- Markörer -->' + String.fromCharCode(10) + pinRows + String.fromCharCode(10) + String.fromCharCode(10) + '<!-- Textfält -->' + String.fromCharCode(10) + itemRows;
 
         const output = document.querySelector('#positionOutput');
         output.value = cssRows;
