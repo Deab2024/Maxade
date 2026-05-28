@@ -133,8 +133,8 @@
     .tooltip {
       position: absolute;
       z-index: 5;
-      left: var(--x);
-      top: var(--y);
+      left: clamp(115px, var(--x), calc(100% - 115px));
+      top: clamp(52px, var(--y), calc(100% - 20px));
       transform: translate(-50%, calc(-100% - 14px));
       background: var(--panel);
       color: var(--white);
@@ -278,55 +278,53 @@
 
         <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
 
-        <button class="pin-hit" data-id="1" style="left: 13.60%; top: 32.30%;" aria-label="1. Circus Le Fou"></button>
-        <button class="pin-hit" data-id="2" style="left: 20.80%; top: 26.80%;" aria-label="2. E:a bibliotek"></button>
-        <button class="pin-hit" data-id="3" style="left: 23.20%; top: 23.20%;" aria-label="3. Kulturskolan"></button>
-        <button class="pin-hit" data-id="4" style="left: 33.50%; top: 25.00%;" aria-label="4. Happy Kids"></button>
-        <button class="pin-hit" data-id="5" style="left: 33.20%; top: 28.90%;" aria-label="5. Svenska kyrkan"></button>
-        <button class="pin-hit" data-id="6" style="left: 28.60%; top: 29.50%;" aria-label="6. S:ta Maria Scoutkår"></button>
-        <button class="pin-hit" data-id="7" style="left: 26.50%; top: 26.40%;" aria-label="7. S:t Eskilskyrkans scouter"></button>
-        <button class="pin-hit" data-id="8" style="left: 23.40%; top: 30.20%;" aria-label="8. Teater Beckalins maskeradhörna"></button>
-        <button class="pin-hit" data-id="9" style="left: 31.00%; top: 33.00%;" aria-label="9. E:a Brukshundklubb"></button>
-        <button class="pin-hit" data-id="10" style="left: 27.40%; top: 35.40%;" aria-label="10. Kulturföreningen Pärlan"></button>
-        <button class="pin-hit" data-id="11" style="left: 12.80%; top: 38.10%;" aria-label="11. Teaterföreningen Sigurd"></button>
-        <button class="pin-hit" data-id="12" style="left: 23.90%; top: 35.00%;" aria-label="12. Grunden"></button>
-        <button class="pin-hit" data-id="13" style="left: 32.00%; top: 38.10%;" aria-label="13. E:a boxningsklubb"></button>
-        <button class="pin-hit" data-id="14" style="left: 25.70%; top: 40.00%;" aria-label="14. E:a Gymnastik- och atletklubb (brottning)"></button>
-        <button class="pin-hit" data-id="15" style="left: 25.30%; top: 45.30%;" aria-label="15. E:a Judoklubb"></button>
-        <button class="pin-hit" data-id="16" style="left: 32.30%; top: 48.20%;" aria-label="16. Ärla IF (orientering)"></button>
-        <button class="pin-hit" data-id="17" style="left: 36.70%; top: 43.10%;" aria-label="17. Nyby Torshälla ridklubb"></button>
-        <button class="pin-hit" data-id="18" style="left: 38.60%; top: 35.50%;" aria-label="18. E:a Bordtennisklubb"></button>
-        <button class="pin-hit" data-id="19" style="left: 49.20%; top: 35.50%;" aria-label="19. Zero One Six (inlines/skate)"></button>
-        <button class="pin-hit" data-id="20" style="left: 43.00%; top: 39.00%;" aria-label="20. E:a Syrianska IF (rugby)"></button>
-        <button class="pin-hit" data-id="21" style="left: 53.10%; top: 40.80%;" aria-label="21. IFK E:a (fotboll)"></button>
-        <button class="pin-hit" data-id="22" style="left: 47.10%; top: 47.00%;" aria-label="22. E:a Taekwondo"></button>
-        <button class="pin-hit" data-id="23" style="left: 38.60%; top: 50.70%;" aria-label="23. IFA E:a (innebandy)"></button>
-        <button class="pin-hit" data-id="24" style="left: 43.90%; top: 54.50%;" aria-label="24. Linden Hockey"></button>
-        <button class="pin-hit" data-id="25" style="left: 56.70%; top: 49.40%;" aria-label="25. E:a Basket"></button>
-        <button class="pin-hit" data-id="26" style="left: 66.00%; top: 51.80%;" aria-label="26. TK Hobby (tennis)"></button>
-        <button class="pin-hit" data-id="27" style="left: 66.20%; top: 43.20%;" aria-label="27. E:a Guif (handboll)"></button>
-        <button class="pin-hit" data-id="28" style="left: 62.30%; top: 33.00%;" aria-label="28. E:a Golfklubb"></button>
-        <button class="pin-hit" data-id="29" style="left: 73.50%; top: 38.50%;" aria-label="29. E:a Bågskyttesällskap"></button>
-        <button class="pin-hit" data-id="30" style="left: 71.70%; top: 47.50%;" aria-label="30. E:a Skytteförening"></button>
-        <button class="pin-hit" data-id="31" style="left: 80.00%; top: 50.00%;" aria-label="31. Tunafors Slalomklubb"></button>
-        <button class="pin-hit" data-id="32" style="left: 73.20%; top: 54.40%;" aria-label="32. Crossfit Fristaden"></button>
-        <button class="pin-hit" data-id="33" style="left: 78.30%; top: 55.30%;" aria-label="33. E:a Gymnastikförening"></button>
-        <button class="pin-hit" data-id="34" style="left: 72.50%; top: 70.00%;" aria-label="34. E:a Boule Pétanque"></button>
-        <button class="pin-hit" data-id="35" style="left: 62.30%; top: 72.60%;" aria-label="35. Torshälla segelsällskap"></button>
-        <button class="pin-hit" data-id="36" style="left: 59.10%; top: 64.80%;" aria-label="36. E:a Friidrott (OCR)"></button>
-
-        <!-- Symboler i kartan -->
-        <button class="pin-hit symbol-pin" data-id="water" style="left: 28.50%; top: 24.50%;" aria-label="Vatten"></button>
-        <button class="pin-hit symbol-pin" data-id="water" style="left: 61.20%; top: 43.60%;" aria-label="Vatten"></button>
-        <button class="pin-hit symbol-pin" data-id="info" style="left: 19.40%; top: 32.40%;" aria-label="Informationstält"></button>
-        <button class="pin-hit symbol-pin" data-id="race" style="left: 24.20%; top: 38.20%;" aria-label="Idrottens dag-lopp: 11:30 & 14:45"></button>
-        <button class="pin-hit symbol-pin" data-id="ung" style="left: 8.10%; top: 31.00%;" aria-label="Ung Fritid"></button>
-        <button class="pin-hit symbol-pin" data-id="finska" style="left: 8.00%; top: 22.80%;" aria-label="Torshälla Finska Förening"></button>
-        <button class="pin-hit symbol-pin" data-id="gardet" style="left: 11.30%; top: 25.10%;" aria-label="Eskilstuna Gardet"></button>
-        <button class="pin-hit symbol-pin" data-id="ungdomssymfoniker" style="left: 15.20%; top: 25.40%;" aria-label="Eskilstuna Ungdomssymfoniker"></button>
-        <button class="pin-hit symbol-pin" data-id="toilet" style="left: 37.30%; top: 20.80%;" aria-label="Toaletter"></button>
-        <button class="pin-hit symbol-pin" data-id="toilet" style="left: 87.00%; top: 61.80%;" aria-label="Toaletter"></button>
-        <button class="pin-hit symbol-pin" data-id="medical" style="left: 31.60%; top: 18.30%;" aria-label="Sjukvård"></button>
+        <button class="pin-hit" data-id="1" style="left: 13.6%; top: 32.3%;" aria-label="1. Circus Le Fou"></button>
+        <button class="pin-hit" data-id="2" style="left: 20.8%; top: 26.8%;" aria-label="2. E:a bibliotek"></button>
+        <button class="pin-hit" data-id="3" style="left: 23.2%; top: 23.2%;" aria-label="3. Kulturskolan"></button>
+        <button class="pin-hit" data-id="4" style="left: 33.5%; top: 25%;" aria-label="4. Happy Kids"></button>
+        <button class="pin-hit" data-id="5" style="left: 33.2%; top: 28.9%;" aria-label="5. Svenska kyrkan"></button>
+        <button class="pin-hit" data-id="6" style="left: 28.6%; top: 29.5%;" aria-label="6. S:ta Maria Scoutkår"></button>
+        <button class="pin-hit" data-id="7" style="left: 26.5%; top: 26.4%;" aria-label="7. S:t Eskilskyrkans scouter"></button>
+        <button class="pin-hit" data-id="8" style="left: 23.4%; top: 30.2%;" aria-label="8. Teater Beckalins maskeradhörna"></button>
+        <button class="pin-hit" data-id="9" style="left: 31%; top: 33%;" aria-label="9. E:a Brukshundklubb"></button>
+        <button class="pin-hit" data-id="10" style="left: 27.4%; top: 35.4%;" aria-label="10. Kulturföreningen Pärlan"></button>
+        <button class="pin-hit" data-id="11" style="left: 12.7%; top: 38.4%;" aria-label="11. Teaterföreningen Sigurd"></button>
+        <button class="pin-hit" data-id="12" style="left: 23.8%; top: 35.89%;" aria-label="12. Grunden"></button>
+        <button class="pin-hit" data-id="13" style="left: 32%; top: 38.1%;" aria-label="13. E:a boxningsklubb"></button>
+        <button class="pin-hit" data-id="14" style="left: 25.39%; top: 40.59%;" aria-label="14. E:a Gymnastik- och atletklubb (brottning)"></button>
+        <button class="pin-hit" data-id="15" style="left: 25.3%; top: 45.3%;" aria-label="15. E:a Judoklubb"></button>
+        <button class="pin-hit" data-id="16" style="left: 32.3%; top: 48.2%;" aria-label="16. Ärla IF (orientering)"></button>
+        <button class="pin-hit" data-id="17" style="left: 36.7%; top: 43.1%;" aria-label="17. Nyby Torshälla ridklubb"></button>
+        <button class="pin-hit" data-id="18" style="left: 38.6%; top: 35.5%;" aria-label="18. E:a Bordtennisklubb"></button>
+        <button class="pin-hit" data-id="19" style="left: 49.3%; top: 36.76%;" aria-label="19. Zero One Six (inlines/skate)"></button>
+        <button class="pin-hit" data-id="20" style="left: 42.69%; top: 39.96%;" aria-label="20. E:a Syrianska IF (rugby)"></button>
+        <button class="pin-hit" data-id="21" style="left: 53.1%; top: 41.17%;" aria-label="21. IFK E:a (fotboll)"></button>
+        <button class="pin-hit" data-id="22" style="left: 47.1%; top: 47%;" aria-label="22. E:a Taekwondo"></button>
+        <button class="pin-hit" data-id="23" style="left: 38.6%; top: 50.7%;" aria-label="23. IFA E:a (innebandy)"></button>
+        <button class="pin-hit" data-id="24" style="left: 43.9%; top: 54.5%;" aria-label="24. Linden Hockey"></button>
+        <button class="pin-hit" data-id="25" style="left: 56.7%; top: 49.4%;" aria-label="25. E:a Basket"></button>
+        <button class="pin-hit" data-id="26" style="left: 66%; top: 51.8%;" aria-label="26. TK Hobby (tennis)"></button>
+        <button class="pin-hit" data-id="27" style="left: 66.2%; top: 43.2%;" aria-label="27. E:a Guif (handboll)"></button>
+        <button class="pin-hit" data-id="28" style="left: 62.3%; top: 33%;" aria-label="28. E:a Golfklubb"></button>
+        <button class="pin-hit" data-id="29" style="left: 73.5%; top: 38.5%;" aria-label="29. E:a Bågskyttesällskap"></button>
+        <button class="pin-hit" data-id="30" style="left: 71.7%; top: 47.5%;" aria-label="30. E:a Skytteförening"></button>
+        <button class="pin-hit" data-id="31" style="left: 80%; top: 50%;" aria-label="31. Tunafors Slalomklubb"></button>
+        <button class="pin-hit" data-id="32" style="left: 73.2%; top: 53.66%;" aria-label="32. Crossfit Fristaden"></button>
+        <button class="pin-hit" data-id="33" style="left: 78.3%; top: 55.3%;" aria-label="33. E:a Gymnastikförening"></button>
+        <button class="pin-hit" data-id="34" style="left: 72.5%; top: 70%;" aria-label="34. E:a Boule Pétanque"></button>
+        <button class="pin-hit" data-id="35" style="left: 62.3%; top: 72.6%;" aria-label="35. Torshälla segelsällskap"></button>
+        <button class="pin-hit" data-id="36" style="left: 58.59%; top: 65.69%;" aria-label="36. E:a Friidrott (OCR)"></button>
+        <button class="pin-hit symbol-pin" data-id="water" style="left: 28.5%; top: 21.98%;" aria-label="Vatten"></button>
+        <button class="pin-hit symbol-pin" data-id="water" style="left: 60.79%; top: 43.53%;" aria-label="Vatten"></button>
+        <button class="pin-hit symbol-pin" data-id="info" style="left: 19.4%; top: 32.4%;" aria-label="Informationstält"></button>
+        <button class="pin-hit symbol-pin" data-id="race" style="left: 17.12%; top: 38.27%;" aria-label="Idrottens dag-lopp: 11:30 & 14:45"></button>
+        <button class="pin-hit symbol-pin" data-id="ung" style="left: 8.1%; top: 31.37%;" aria-label="Ung Fritid"></button>
+        <button class="pin-hit symbol-pin" data-id="finska" style="left: 15.38%; top: 26.13%;" aria-label="Torshälla Finska Förening"></button>
+        <button class="pin-hit symbol-pin" data-id="gardet" style="left: 8.12%; top: 23.41%;" aria-label="Eskilstuna Gardet"></button>
+        <button class="pin-hit symbol-pin" data-id="ungdomssymfoniker" style="left: 10.69%; top: 20.36%;" aria-label="Eskilstuna Ungdomssymfoniker"></button>
+        <button class="pin-hit symbol-pin" data-id="toilet" style="left: 37.2%; top: 19.98%;" aria-label="Toaletter"></button>
+        <button class="pin-hit symbol-pin" data-id="toilet" style="left: 87.31%; top: 62.39%;" aria-label="Toaletter"></button>
+        <button class="pin-hit symbol-pin" data-id="medical" style="left: 31.5%; top: 18.67%;" aria-label="Sjukvård"></button>
       </div>
 
       <div class="list-panel" id="listPanel" aria-label="Numrerad lista över aktörer">
@@ -337,48 +335,44 @@
         <button class="list-item" data-id="5" style="left: 3.2%; top: 27.6%; width: 13.3%;" aria-label="5. Svenska kyrkan"></button>
         <button class="list-item" data-id="6" style="left: 3.2%; top: 34.65%; width: 15.5%;" aria-label="6. S:ta Maria Scoutkår"></button>
         <button class="list-item" data-id="7" style="left: 3.2%; top: 41.7%; width: 19.2%;" aria-label="7. S:t Eskilskyrkans scouter"></button>
-        <button class="list-item" data-id="8" style="left: 3.2%; top: 48.75%; width: 19.8%; height: 10.8%;" aria-label="8. Teater Beckalins maskeradhörna"></button>
+        <button class="list-item" data-id="8" style="left: 3.2%; top: 48.75%; width: 14.68%; height: 12.96%;" aria-label="8. Teater Beckalins maskeradhörna"></button>
         <button class="list-item" data-id="9" style="left: 3.2%; top: 62.85%; width: 17.4%;" aria-label="9. E:a Brukshundklubb"></button>
         <button class="list-item" data-id="10" style="left: 3.2%; top: 69.9%; width: 19.2%;" aria-label="10. Kulturföreningen Pärlan"></button>
         <button class="list-item" data-id="11" style="left: 3.2%; top: 76.95%; width: 19.2%;" aria-label="11. Teaterföreningen Sigurd"></button>
         <button class="list-item" data-id="12" style="left: 3.2%; top: 84%; width: 10.5%;" aria-label="12. Grunden"></button>
-
-        <button class="list-item" data-id="13" style="left: 24%; top: -0.6%; width: 16.5%;" aria-label="13. E:a boxningsklubb"></button>
-        <button class="list-item" data-id="14" style="left: 24%; top: 6.45%; width: 24%; height: 10.8%;" aria-label="14. E:a Gymnastik- och atletklubb (brottning)"></button>
+        <button class="list-item" data-id="13" style="left: 24%; top: -0.6%; width: 14.55%; height: 6.03%;" aria-label="13. E:a boxningsklubb"></button>
+        <button class="list-item" data-id="14" style="left: 24%; top: 6.88%; width: 15.28%; height: 12.95%;" aria-label="14. E:a Gymnastik- och atletklubb (brottning)"></button>
         <button class="list-item" data-id="15" style="left: 24%; top: 20.55%; width: 15%;" aria-label="15. E:a Judoklubb"></button>
-        <button class="list-item" data-id="16" style="left: 24%; top: 27.6%; width: 20%;" aria-label="16. Ärla IF (orientering)"></button>
-        <button class="list-item" data-id="17" style="left: 24%; top: 34.65%; width: 22%;" aria-label="17. Nyby Torshälla ridklubb"></button>
-        <button class="list-item" data-id="18" style="left: 24%; top: 41.7%; width: 20%;" aria-label="18. E:a Bordtennisklubb"></button>
-        <button class="list-item" data-id="19" style="left: 24%; top: 48.75%; width: 24%;" aria-label="19. Zero One Six (inlines/skate)"></button>
-        <button class="list-item" data-id="20" style="left: 24%; top: 55.8%; width: 21%;" aria-label="20. E:a Syrianska IF (rugby)"></button>
-        <button class="list-item" data-id="21" style="left: 24%; top: 62.85%; width: 17%;" aria-label="21. IFK E:a (fotboll)"></button>
-        <button class="list-item" data-id="22" style="left: 24%; top: 69.9%; width: 15%;" aria-label="22. E:a Taekwondo"></button>
-        <button class="list-item" data-id="23" style="left: 24%; top: 76.95%; width: 19%;" aria-label="23. IFA E:a (innebandy)"></button>
-        <button class="list-item" data-id="24" style="left: 24%; top: 84%; width: 15%;" aria-label="24. Linden Hockey"></button>
-
+        <button class="list-item" data-id="16" style="left: 24%; top: 27.6%; width: 15.79%; height: 6.46%;" aria-label="16. Ärla IF (orientering)"></button>
+        <button class="list-item" data-id="17" style="left: 23.8%; top: 34.22%; width: 17.18%; height: 7.75%;" aria-label="17. Nyby Torshälla ridklubb"></button>
+        <button class="list-item" data-id="18" style="left: 23.79%; top: 42.13%; width: 17.03%; height: 6.03%;" aria-label="18. E:a Bordtennisklubb"></button>
+        <button class="list-item" data-id="19" style="left: 23.8%; top: 49.18%; width: 19.59%; height: 6.46%;" aria-label="19. Zero One Six (inlines/skate)"></button>
+        <button class="list-item" data-id="20" style="left: 23.79%; top: 54.94%; width: 17.62%; height: 6.9%;" aria-label="20. E:a Syrianska IF (rugby)"></button>
+        <button class="list-item" data-id="21" style="left: 24%; top: 62.85%; width: 13.51%; height: 6.03%;" aria-label="21. IFK E:a (fotboll)"></button>
+        <button class="list-item" data-id="22" style="left: 24%; top: 69.9%; width: 12.74%; height: 6.9%;" aria-label="22. E:a Taekwondo"></button>
+        <button class="list-item" data-id="23" style="left: 24%; top: 76.95%; width: 15.31%; height: 5.17%;" aria-label="23. IFA E:a (innebandy)"></button>
+        <button class="list-item" data-id="24" style="left: 23.79%; top: 83.57%; width: 12.33%; height: 7.76%;" aria-label="24. Linden Hockey"></button>
         <button class="list-item" data-id="25" style="left: 45.2%; top: -0.6%; width: 13%;" aria-label="25. E:a Basket"></button>
-        <button class="list-item" data-id="26" style="left: 45.2%; top: 6.45%; width: 18%;" aria-label="26. TK Hobby (tennis)"></button>
-        <button class="list-item" data-id="27" style="left: 45.2%; top: 13.5%; width: 18.5%;" aria-label="27. E:a Guif (handboll)"></button>
-        <button class="list-item" data-id="28" style="left: 45.2%; top: 20.55%; width: 15.5%;" aria-label="28. E:a Golfklubb"></button>
-        <button class="list-item" data-id="29" style="left: 45.2%; top: 27.6%; width: 21.5%;" aria-label="29. E:a Bågskyttesällskap"></button>
-        <button class="list-item" data-id="30" style="left: 45.2%; top: 34.65%; width: 19%;" aria-label="30. E:a Skytteförening"></button>
-        <button class="list-item" data-id="31" style="left: 45.2%; top: 41.7%; width: 21%;" aria-label="31. Tunafors Slalomklubb"></button>
-        <button class="list-item" data-id="32" style="left: 45.2%; top: 48.75%; width: 18%;" aria-label="32. Crossfit Fristaden"></button>
-        <button class="list-item" data-id="33" style="left: 45.2%; top: 55.8%; width: 21%;" aria-label="33. E:a Gymnastikförening"></button>
-        <button class="list-item" data-id="34" style="left: 45.2%; top: 62.85%; width: 20%;" aria-label="34. E:a Boule Pétanque"></button>
-        <button class="list-item" data-id="35" style="left: 45.2%; top: 69.9%; width: 22.5%;" aria-label="35. Torshälla segelsällskap"></button>
-        <button class="list-item" data-id="36" style="left: 45.2%; top: 76.95%; width: 17.2%;" aria-label="36. E:a Friidrott (OCR)"></button>
-
-        <!-- Symbolförklaring nere till höger -->
-        <button class="list-item" data-id="water" style="left: 64.8%; top: 32.6%; width: 10.0%;" aria-label="Vatten"></button>
-        <button class="list-item" data-id="info" style="left: 80.6%; top: 32.4%; width: 18.0%;" aria-label="Informationstält"></button>
-        <button class="list-item" data-id="race" style="left: 75.6%; top: 51.0%; width: 20.0%; height: 10.5%;" aria-label="Idrottens dag-lopp: 11:30 & 14:45"></button>
-        <button class="list-item" data-id="ung" style="left: 80.2%; top: 73.5%; width: 12.2%;" aria-label="Ung Fritid"></button>
-        <button class="list-item" data-id="finska" style="left: 64.6%; top: 3.8%; width: 22.0%;" aria-label="Torshälla Finska Förening"></button>
-        <button class="list-item" data-id="gardet" style="left: 64.6%; top: 10.8%; width: 17.0%;" aria-label="Eskilstuna Gardet"></button>
-        <button class="list-item" data-id="ungdomssymfoniker" style="left: 64.6%; top: 17.8%; width: 28.0%;" aria-label="Eskilstuna Ungdomssymfoniker"></button>
-        <button class="list-item" data-id="toilet" style="left: 64.6%; top: 51.0%; width: 12.4%;" aria-label="Toaletter"></button>
-        <button class="list-item" data-id="medical" style="left: 64.6%; top: 73.5%; width: 11.8%;" aria-label="Sjukvård"></button>
+        <button class="list-item" data-id="26" style="left: 45.2%; top: 6.45%; width: 15.03%; height: 6.9%;" aria-label="26. TK Hobby (tennis)"></button>
+        <button class="list-item" data-id="27" style="left: 45.2%; top: 13.5%; width: 15.63%; height: 7.33%;" aria-label="27. E:a Guif (handboll)"></button>
+        <button class="list-item" data-id="28" style="left: 45.2%; top: 20.55%; width: 12.53%; height: 6.46%;" aria-label="28. E:a Golfklubb"></button>
+        <button class="list-item" data-id="29" style="left: 45.2%; top: 27.6%; width: 17.4%; height: 6.03%;" aria-label="29. E:a Bågskyttesällskap"></button>
+        <button class="list-item" data-id="30" style="left: 44.99%; top: 35.08%; width: 16.74%; height: 5.6%;" aria-label="30. E:a Skytteförening"></button>
+        <button class="list-item" data-id="31" style="left: 45.2%; top: 41.7%; width: 17.21%; height: 5.6%;" aria-label="31. Tunafors Slalomklubb"></button>
+        <button class="list-item" data-id="32" style="left: 45.2%; top: 48.75%; width: 15.23%; height: 6.9%;" aria-label="32. Crossfit Fristaden"></button>
+        <button class="list-item" data-id="33" style="left: 45.2%; top: 55.8%; width: 17%; height: 6.03%;" aria-label="33. E:a Gymnastikförening"></button>
+        <button class="list-item" data-id="34" style="left: 45.2%; top: 62.85%; width: 16.41%; height: 5.6%;" aria-label="34. E:a Boule Pétanque"></button>
+        <button class="list-item" data-id="35" style="left: 44.99%; top: 69.04%; width: 17.68%; height: 6.9%;" aria-label="35. Torshälla segelsällskap"></button>
+        <button class="list-item" data-id="36" style="left: 44.79%; top: 76.52%; width: 14.74%; height: 6.46%;" aria-label="36. E:a Friidrott (OCR)"></button>
+        <button class="list-item" data-id="water" style="left: 63.67%; top: 35.18%; width: 10.41%; height: 7.76%;" aria-label="Vatten"></button>
+        <button class="list-item" data-id="info" style="left: 79.57%; top: 34.13%; width: 15.33%; height: 8.19%;" aria-label="Informationstält"></button>
+        <button class="list-item" data-id="race" style="left: 79.5%; top: 51.43%; width: 16%; height: 12.22%;" aria-label="Idrottens dag-lopp: 11:30 & 14:45"></button>
+        <button class="list-item" data-id="ung" style="left: 80.2%; top: 71.78%; width: 10.15%; height: 10.77%;" aria-label="Ung Fritid"></button>
+        <button class="list-item" data-id="finska" style="left: 64.39%; top: 3.37%; width: 19.85%; height: 6.03%;" aria-label="Torshälla Finska Förening"></button>
+        <button class="list-item" data-id="gardet" style="left: 64.6%; top: 10.37%; width: 14.13%; height: 6.9%;" aria-label="Eskilstuna Gardet"></button>
+        <button class="list-item" data-id="ungdomssymfoniker" style="left: 64.6%; top: 17.8%; width: 23.49%; height: 6.46%;" aria-label="Eskilstuna Ungdomssymfoniker"></button>
+        <button class="list-item" data-id="toilet" style="left: 64.09%; top: 52.72%; width: 10.14%; height: 9.05%;" aria-label="Toaletter"></button>
+        <button class="list-item" data-id="medical" style="left: 64.09%; top: 72.64%; width: 10.37%; height: 10.34%;" aria-label="Sjukvård"></button>
       </div>
     </section>
   </main>
